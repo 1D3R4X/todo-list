@@ -7,6 +7,8 @@ server.use((req, res, next) => {
   res.removeHeader("Access-Control-Allow-Origin"); 
   res.removeHeader("Access-Control-Allow-Headers"); 
   res.removeHeader("Access-Control-Allow-Methods"); 
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next(); 
 }); 
  
