@@ -43,7 +43,7 @@ export function CreateTodo() {
       createdAt: new Date(),
     };
 
-    const response = await fetch('http://localhost:3001/todos', {
+    const response = await fetch('/api/todos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

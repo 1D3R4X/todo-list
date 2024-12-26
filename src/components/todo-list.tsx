@@ -36,7 +36,7 @@ export function TodoList() {
   useEffect(() => {
     if (!isChange) return;
 
-    fetch('http://localhost:3001/todos')
+    fetch('/api/todos')
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);

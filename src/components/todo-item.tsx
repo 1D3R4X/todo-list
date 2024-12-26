@@ -38,7 +38,7 @@ export function TodoItem({
   const onChange = async () => {
     setIsDone((prev) => !prev);
 
-    const response = await fetch(`http://localhost:3001/todos/${todo.id}`, {
+    const response = await fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export function TodoItem({
   const onDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
 
-    const response = await fetch(`http://localhost:3001/todos/${todo.id}`, {
+    const response = await fetch(`/api/todos/${todo.id}`, {
       method: 'DELETE',
     });
 

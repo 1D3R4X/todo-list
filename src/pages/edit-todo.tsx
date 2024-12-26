@@ -31,7 +31,7 @@ export function EditTodo() {
   const [description, setDescription] = useState<string>('');
 
   useEffect(() => {
-    fetch(`http://localhost:3001/todos/${id}`)
+    fetch(`/api/todos/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPriority(data.priority);
@@ -48,7 +48,7 @@ export function EditTodo() {
   };
 
   const handleEditTodo = async () => {
-    const response = await fetch(`http://localhost:3001/todos/${id}`, {
+    const response = await fetch(`/api/todos/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ description, priority }),
     });
