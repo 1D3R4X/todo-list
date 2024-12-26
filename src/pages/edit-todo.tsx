@@ -1,24 +1,25 @@
-import { useState } from "react";
-import { Todo } from "@/app/types/todo";
-import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@/shared/components/ui/button";
-import { Textarea } from "@/shared/components/ui/textarea";
-import { Label } from "@radix-ui/react-label";
+import { Label } from '@radix-ui/react-label';
+import { ArrowLeftIcon } from 'lucide-react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+
+import { Button } from '@/shared/components/ui/button';
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/shared/components/ui/select";
-import { useToast } from "@/shared/hooks/use-toast";
-import { ArrowLeftIcon } from "lucide-react";
+} from '@/shared/components/ui/select';
+import { Textarea } from '@/shared/components/ui/textarea';
+import { useToast } from '@/shared/hooks/use-toast';
+
 
 const priorities = [
-  { value: "low", label: "Низкий" },
-  { value: "medium", label: "Средний" },
-  { value: "high", label: "Высокий" },
+  { value: 'low', label: 'Низкий' },
+  { value: 'medium', label: 'Средний' },
+  { value: 'high', label: 'Высокий' },
 ];
 
 export function EditTodo() {
@@ -26,8 +27,8 @@ export function EditTodo() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const [priority, setPriority] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [priority, setPriority] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
 
   useEffect(() => {
     fetch(`http://localhost:3001/todos/${id}`)
@@ -48,22 +49,22 @@ export function EditTodo() {
 
   const handleEditTodo = async () => {
     const response = await fetch(`http://localhost:3001/todos/${id}`, {
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify({ description, priority }),
     });
 
     if (response.ok) {
-      navigate("/");
+      navigate('/');
       toast({
-        variant: "success",
-        title: "Задача изменена",
-        description: "Задача успешно изменена",
+        variant: 'success',
+        title: 'Задача изменена',
+        description: 'Задача успешно изменена',
       });
     } else {
       toast({
-        variant: "destructive",
-        title: "Ошибка",
-        description: "Не удалось изменить задачу",
+        variant: 'destructive',
+        title: 'Ошибка',
+        description: 'Не удалось изменить задачу',
       });
     }
   };

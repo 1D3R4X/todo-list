@@ -1,6 +1,7 @@
-import { Header } from "@/components/header";
-import { Toaster } from "@/shared/components/ui/toaster";
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
+
+import { Header } from '@/components/header';
+import { Toaster } from '@/shared/components/ui/toaster';
 
 export default function Layout() {
   return (

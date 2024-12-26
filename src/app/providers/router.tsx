@@ -1,24 +1,26 @@
-import { createBrowserRouter, RouteObject } from "react-router-dom";
-import Layout from "../layout";
-import { CreateTodo } from "@/pages/create-todo";
-import { TodosPage } from "@/pages/todos-page";
-import { EditTodo } from "@/pages/edit-todo";
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
+
+import { CreateTodo } from '@/pages/create-todo';
+import { EditTodo } from '@/pages/edit-todo';
+import { TodosPage } from '@/pages/todos-page';
+
+import Layout from '../layout';
 
 const RouterConfig: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <TodosPage />,
       },
       {
-        path: "/create-todo",
+        path: '/create-todo',
         element: <CreateTodo />,
       },
       {
-        path: "/edit-todo/:id",
+        path: '/edit-todo/:id',
         element: <EditTodo />,
       },
     ],

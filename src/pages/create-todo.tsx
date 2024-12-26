@@ -1,28 +1,29 @@
-import { Button } from "@/shared/components/ui/button";
-import { Label } from "@/shared/components/ui/label";
+import { ArrowLeftIcon } from 'lucide-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { Button } from '@/shared/components/ui/button';
+import { Label } from '@/shared/components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
-import { Textarea } from "@/shared/components/ui/textarea";
-import { useToast } from "@/shared/hooks/use-toast";
-import { ArrowLeftIcon } from "lucide-react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+} from '@/shared/components/ui/select';
+import { Textarea } from '@/shared/components/ui/textarea';
+import { useToast } from '@/shared/hooks/use-toast';
 
 const priorities = [
-  { value: "low", label: "Низкий" },
-  { value: "medium", label: "Средний" },
-  { value: "high", label: "Высокий" },
+  { value: 'low', label: 'Низкий' },
+  { value: 'medium', label: 'Средний' },
+  { value: 'high', label: 'Высокий' },
 ];
 
 export function CreateTodo() {
   const { toast } = useToast();
-  const [priority, setPriority] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [priority, setPriority] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const navigate = useNavigate();
 
   const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -42,32 +43,32 @@ export function CreateTodo() {
       createdAt: new Date(),
     };
 
-    const response = await fetch("http://localhost:3001/todos", {
-      method: "POST",
+    const response = await fetch('http://localhost:3001/todos', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(newTodo),
     });
 
     if (response.ok) {
       toast({
-        variant: "success",
-        title: "Задача успешно создана",
-        description: "Задача успешно создана",
+        variant: 'success',
+        title: 'Задача успешно создана',
+        description: 'Задача успешно создана',
       });
     } else {
       toast({
-        variant: "destructive",
-        title: "Ошибка при создании задачи",
-        description: "Ошибка при создании задачи",
+        variant: 'destructive',
+        title: 'Ошибка при создании задачи',
+        description: 'Ошибка при создании задачи',
       });
     }
 
-    setDescription("");
-    setPriority("");
+    setDescription('');
+    setPriority('');
 
-    navigate("/");
+    navigate('/');
   };
 
   return (

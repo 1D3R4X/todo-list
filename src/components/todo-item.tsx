@@ -1,27 +1,27 @@
-import { Todo } from "@/app/types/todo";
-import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
-import { useToast } from "@/shared/hooks/use-toast";
-import { cn } from "@/shared/lib/utils";
 import {
   CheckIcon,
   CircleIcon,
   Pencil1Icon,
   TrashIcon,
-} from "@radix-ui/react-icons";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+} from '@radix-ui/react-icons';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Todo } from '@/app/types/todo';
+import { Button } from '@/shared/components/ui/button';
+import { useToast } from '@/shared/hooks/use-toast';
+import { cn } from '@/shared/lib/utils';
 
 const PRIORITY_COLORS = {
-  high: "bg-red-100 text-red-800",
-  medium: "bg-yellow-100 text-yellow-800",
-  low: "bg-green-100 text-green-800",
+  high: 'bg-red-100 text-red-800',
+  medium: 'bg-yellow-100 text-yellow-800',
+  low: 'bg-green-100 text-green-800',
 };
 
 const PRIORITY_LABELS = {
-  high: "Высокий",
-  medium: "Средний",
-  low: "Низкий",
+  high: 'Высокий',
+  medium: 'Средний',
+  low: 'Низкий',
 };
 
 export function TodoItem({
@@ -39,17 +39,17 @@ export function TodoItem({
     setIsDone((prev) => !prev);
 
     const response = await fetch(`http://localhost:3001/todos/${todo.id}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ ...todo, isDone: !isDone }),
     });
 
     if (response.ok) {
       toast({
-        variant: "success",
-        title: "Задача успешно обновлена",
+        variant: 'success',
+        title: 'Задача успешно обновлена',
       });
 
       setIsChange(true);
@@ -60,13 +60,13 @@ export function TodoItem({
     event.stopPropagation();
 
     const response = await fetch(`http://localhost:3001/todos/${todo.id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
 
     if (response.ok) {
       toast({
-        variant: "success",
-        title: "Задача успешно удалена",
+        variant: 'success',
+        title: 'Задача успешно удалена',
       });
 
       setIsChange(true);
@@ -82,8 +82,8 @@ export function TodoItem({
   return (
     <div
       className={cn(
-        "p-4 mb-3 bg-secondary rounded-lg shadow-sm border border-muted-foreground hover:shadow-md transition-shadow",
-        isDone && "bg-secondary/50"
+        'p-4 mb-3 bg-secondary rounded-lg shadow-sm border border-muted-foreground hover:shadow-md transition-shadow',
+        isDone && 'bg-secondary/50'
       )}
       onClick={onChange}
     >
@@ -98,8 +98,8 @@ export function TodoItem({
         <div className="flex-1">
           <h3
             className={cn(
-              "text-lg font-medium text-foreground",
-              isDone && "text-muted-foreground line-through"
+              'text-lg font-medium text-foreground',
+              isDone && 'text-muted-foreground line-through'
             )}
           >
             {todo.description}

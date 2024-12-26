@@ -1,24 +1,27 @@
-import { Todo } from "@/app/types/todo";
-import { Skeleton } from "@/shared/components/ui/skeleton";
-import { useEffect, useState } from "react";
-import { TodoItem } from "./todo-item";
-import { Progress } from "@/shared/components/ui/progress";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
+import { X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+import { Todo } from '@/app/types/todo';
+import { Button } from '@/shared/components/ui/button';
+import { Input } from '@/shared/components/ui/input';
+import { Progress } from '@/shared/components/ui/progress';
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/shared/components/ui/select";
+} from '@/shared/components/ui/select';
+import { Skeleton } from '@/shared/components/ui/skeleton';
 
-import { X } from "lucide-react";
+import { TodoItem } from './todo-item';
+
+
 
 const priorities = [
-  { value: "low", label: "Низкий" },
-  { value: "medium", label: "Средний" },
-  { value: "high", label: "Высокий" },
+  { value: 'low', label: 'Низкий' },
+  { value: 'medium', label: 'Средний' },
+  { value: 'high', label: 'Высокий' },
 ];
 
 export function TodoList() {
@@ -27,13 +30,13 @@ export function TodoList() {
   const [isLoading, setIsLoading] = useState(true);
   const [isChange, setIsChange] = useState(true);
 
-  const [search, setSearch] = useState("");
-  const [priority, setPriority] = useState<string>("");
+  const [search, setSearch] = useState('');
+  const [priority, setPriority] = useState<string>('');
 
   useEffect(() => {
     if (!isChange) return;
 
-    fetch("http://localhost:3001/todos")
+    fetch('http://localhost:3001/todos')
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);
@@ -91,8 +94,8 @@ export function TodoList() {
           variant="outline"
           size="icon"
           onClick={() => {
-            setSearch("");
-            setPriority("");
+            setSearch('');
+            setPriority('');
           }}
         >
           <X className="w-4 h-4" />
@@ -121,8 +124,8 @@ export function TodoList() {
           <Button
             variant="outline"
             onClick={() => {
-              setSearch("");
-              setPriority("");
+              setSearch('');
+              setPriority('');
             }}
           >
             Очистить фильтры

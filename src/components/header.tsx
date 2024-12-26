@@ -1,7 +1,8 @@
-import { useTheme } from "@/app/providers/theme-provider";
-import { Button } from "@/shared/components/ui/button";
-import { MoonIcon, PlusIcon, SunIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { MoonIcon, PlusIcon, SunIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+import { useTheme } from '@/app/providers/theme-provider';
+import { Button } from '@/shared/components/ui/button';
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -25,7 +26,7 @@ export function Header() {
             className="flex items-center gap-2"
             onClick={toggleTheme}
           >
-            {theme === "dark" ? (
+            {theme === 'dark' ? (
               <SunIcon className="w-4 h-4" />
             ) : (
               <MoonIcon className="w-4 h-4" />
